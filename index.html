@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#111827">
 <meta property="og:title" content="🌌 宇宙開拓クリッカー">
 <meta property="og:description" content="惑星をクリックしてエネルギーを集め、宇宙を開拓しよう！">
@@ -10,7 +10,6 @@
 
 <style>
 *{box-sizing:border-box}
-
 body{
  margin:0;
  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
@@ -18,32 +17,11 @@ body{
  color:#f8fafc;
  min-height:100vh
 }
-
 button,input,textarea{font:inherit}
-
-.app{
- max-width:720px;
- margin:auto;
- padding:14px 12px 36px
-}
-
-h1{
- font-size:25px;
- margin:6px 0
-}
-
-.sub{
- opacity:.7;
- font-size:13px;
- margin-bottom:12px
-}
-
-.grid{
- display:grid;
- grid-template-columns:repeat(3,1fr);
- gap:8px
-}
-
+.app{max-width:720px;margin:auto;padding:14px 12px 36px}
+h1{font-size:25px;margin:6px 0}
+.sub{opacity:.7;font-size:13px;margin-bottom:12px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
 .card,.panel{
  background:rgba(17,24,39,.82);
  border:1px solid rgba(255,255,255,.12);
@@ -51,29 +29,10 @@ h1{
  padding:12px;
  backdrop-filter:blur(8px)
 }
-
-.label{
- font-size:12px;
- opacity:.65
-}
-
-.big{
- font-size:30px;
- font-weight:900;
- margin-top:2px;
- word-break:break-all
-}
-
-.planet-wrap{
- text-align:center;
- padding:14px 0 8px
-}
-
-.planet-name{
- font-weight:800;
- font-size:19px
-}
-
+.label{font-size:12px;opacity:.65}
+.big{font-size:30px;font-weight:900;margin-top:2px;word-break:break-all}
+.planet-wrap{text-align:center;padding:14px 0 8px}
+.planet-name{font-weight:800;font-size:19px}
 .planet{
  width:min(64vw,245px);
  height:min(64vw,245px);
@@ -81,28 +40,12 @@ h1{
  border:0;
  font-size:76px;
  cursor:pointer;
- box-shadow:
-  0 0 45px rgba(112,170,255,.3),
-  inset -18px -15px 35px rgba(0,0,0,.25);
- background:
-  radial-gradient(circle at 35% 30%,#b9e7ff,#3674b9 55%,#172554)
+ box-shadow:0 0 45px rgba(112,170,255,.3),inset -18px -15px 35px rgba(0,0,0,.25);
+ background:radial-gradient(circle at 35% 30%,#b9e7ff,#3674b9 55%,#172554)
 }
-
-.planet:active{
- transform:scale(.92)
-}
-
-.tabs{
- display:grid;
- grid-template-columns:repeat(4,1fr);
- gap:6px;
- margin:8px 0
-}
-
-.tabs button{
- padding:10px 4px
-}
-
+.planet:active{transform:scale(.92)}
+.tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:8px 0}
+.tabs button{padding:10px 4px}
 button{
  border:1px solid rgba(255,255,255,.16);
  background:#1f2937;
@@ -111,52 +54,23 @@ button{
  padding:11px;
  cursor:pointer
 }
-
-button:hover:not(:disabled){
- filter:brightness(1.12)
-}
-
-button:disabled{
- opacity:.42;
- cursor:not-allowed
-}
-
-.tab.active{
+button:hover:not(:disabled){filter:brightness(1.12)}
+button:disabled{opacity:.42;cursor:not-allowed}
+.tab.active,.rarityFilter.active{
  background:#334155;
  outline:2px solid #60a5fa
 }
-
-.hidden{
- display:none!important
+.hidden{display:none!important}
+.list{display:grid;gap:8px}
+.crew-card{
+ background:rgba(31,41,55,.72);
+ border:1px solid rgba(255,255,255,.1);
+ border-radius:14px;
+ padding:11px
 }
-
-.list{
- display:grid;
- gap:8px
-}
-
-.item{
- text-align:left;
- width:100%
-}
-
-.row{
- display:flex;
- justify-content:space-between;
- gap:10px;
- align-items:center
-}
-
-.name{
- font-weight:800
-}
-
-.desc{
- font-size:12px;
- opacity:.65;
- margin-top:3px
-}
-
+.row{display:flex;justify-content:space-between;gap:10px;align-items:center}
+.name{font-weight:800}
+.desc{font-size:12px;opacity:.65;margin-top:3px}
 .badge{
  font-size:11px;
  border:1px solid #64748b;
@@ -164,7 +78,6 @@ button:disabled{
  padding:2px 7px;
  white-space:nowrap
 }
-
 textarea{
  width:100%;
  background:#0b1120;
@@ -174,310 +87,140 @@ textarea{
  padding:10px;
  resize:vertical
 }
-
-.notice{
- text-align:center;
- min-height:20px;
- font-size:13px;
- opacity:.8;
- margin:9px 0
-}
-
-.action{
- width:100%;
- margin-top:8px
-}
-
-.danger{
- background:#3b1d2a
-}
-
-hr{
- border:0;
- border-top:1px solid rgba(255,255,255,.1);
- margin:12px 0
-}
-
-small{
- opacity:.65
-}
-
-/* キャラ画面 */
-
-.filter-row{
- display:flex;
- gap:6px;
- flex-wrap:wrap;
- margin:10px 0
-}
-
-.filter-row button{
- padding:8px 12px
-}
-
-.filter-row button.active{
- background:#334155;
- outline:2px solid #60a5fa
-}
-
-.crew-card{
+.notice{text-align:center;min-height:20px;font-size:13px;opacity:.8;margin:9px 0}
+.action{width:100%;margin-top:8px}
+.danger{background:#3b1d2a}
+hr{border:0;border-top:1px solid rgba(255,255,255,.1);margin:12px 0}
+small{opacity:.65}
+.equip-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:7px;margin-top:8px}
+.equip-slot{
  background:rgba(31,41,55,.72);
  border:1px solid rgba(255,255,255,.1);
- border-radius:14px;
- padding:11px
+ border-radius:12px;
+ padding:8px;
+ font-size:12px
 }
-
-.crew-card.equipped{
- border-color:#60a5fa
-}
-
-.crew-main{
- display:flex;
- gap:10px;
- align-items:center
-}
-
-.crew-avatar{
- font-size:38px
-}
-
-.crew-info{
- min-width:0;
- flex:1
-}
-
-.crew-actions{
- margin-top:8px
-}
-
-.empty{
- text-align:center;
- opacity:.6;
- padding:15px
-}
-
+.equip-slot.empty{opacity:.45}
 @media(max-width:430px){
- .big{
-  font-size:23px
- }
-
- .tabs button{
-  font-size:12px
- }
+ .big{font-size:23px}
+ .tabs button{font-size:12px}
+ .equip-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
 
 <body>
-
 <div class="app">
 
 <h1>🌌 宇宙開拓クリッカー</h1>
-
-<div class="sub">
-惑星をクリック → 施設を建設 → キャラを集める → 銀河を制覇！
-</div>
+<div class="sub">惑星をクリック → 施設を建設 → キャラを集める → 銀河を制覇！</div>
 
 <div class="grid">
-
  <div class="card">
   <div class="label">⚡ エネルギー</div>
   <div id="energy" class="big">0</div>
  </div>
-
  <div class="card">
   <div class="label">👆 1クリック</div>
   <div id="clickPower" class="big">+1</div>
  </div>
-
  <div class="card">
   <div class="label">🤖 自動/秒</div>
   <div id="autoPower" class="big">0</div>
  </div>
-
 </div>
 
 <div class="planet-wrap">
-
- <div id="planetName" class="planet-name">
-  🌍 地球
- </div>
-
- <div class="sub">
-  クリックしてエネルギーを獲得
- </div>
-
- <button
-  id="planet"
-  class="planet"
-  aria-label="惑星をクリック"
- >
-  🌍
- </button>
-
+ <div id="planetName" class="planet-name">🌍 地球</div>
+ <div class="sub">クリックしてエネルギーを獲得</div>
+ <button id="planet" class="planet" aria-label="惑星をクリック">🌍</button>
 </div>
 
 <div class="tabs">
-
- <button class="tab active" data-tab="build">
-  🏗️建設
- </button>
-
- <button class="tab" data-tab="crew">
-  👨‍🚀キャラ
- </button>
-
- <button class="tab" data-tab="galaxy">
-  🌌銀河
- </button>
-
- <button class="tab" data-tab="save">
-  💾保存
- </button>
-
+ <button class="tab active" data-tab="build">🏗️建設</button>
+ <button class="tab" data-tab="crew">👨‍🚀キャラ</button>
+ <button class="tab" data-tab="galaxy">🌌銀河</button>
+ <button class="tab" data-tab="save">💾保存</button>
 </div>
 
-<!-- 建設 -->
-
 <section id="build" class="panel">
-
- <div class="sub">
-  施設は全部別物！価格と効果が違います。
- </div>
-
+ <div class="sub">施設を建設するとクリック力・自動生産が上がります。</div>
  <div id="facilities" class="list"></div>
-
 </section>
-
-
-<!-- キャラ -->
 
 <section id="crew" class="panel hidden">
 
- <div style="font-size:15px;font-weight:800;margin-bottom:7px">
-  ⚙️ 装備中
+ <div class="card">
+  <div class="row">
+   <div>
+    <div class="label">⚙️ 装備中</div>
+    <div id="equipCount" class="name">0 / 6体</div>
+   </div>
+   <span class="badge">装備枠</span>
+  </div>
+
+  <div id="equippedCrew" class="equip-grid"></div>
+
+  <div class="desc">
+   転生するほど装備できる探検メンバーが増えます。
+   初期6体、1転生ごとに+1体。
+  </div>
  </div>
-
- <div
-  id="equippedCrew"
-  class="crew-card equipped"
- ></div>
-
-
- <div style="font-size:15px;font-weight:800;margin:12px 0 7px">
-  📦 所持メンバー
- </div>
-
- <div
-  class="filter-row"
-  id="rarityFilters"
- >
-
-  <button
-   type="button"
-   class="active"
-   data-rarity="ALL"
-  >
-   すべて
-  </button>
-
-  <button
-   type="button"
-   data-rarity="N"
-  >
-   N
-  </button>
-
-  <button
-   type="button"
-   data-rarity="R"
-  >
-   R
-  </button>
-
-  <button
-   type="button"
-   data-rarity="SR"
-  >
-   SR
-  </button>
-
-  <button
-   type="button"
-   data-rarity="SSR"
-  >
-   SSR
-  </button>
-
-  <button
-   type="button"
-   data-rarity="UR"
-  >
-   UR
-  </button>
-
- </div>
-
- <div
-  id="ownedCrews"
-  class="list"
- ></div>
 
  <hr>
 
- <button
-  id="gacha"
-  class="action"
- >
+ <div class="row">
+  <b>📦 所持メンバー</b>
+  <span id="ownedCount" class="badge">1体</span>
+ </div>
+
+ <div class="desc">
+  所持しているメンバーから、好きなメンバーを装備できます。
+  ガチャで自動装備はされません。
+ </div>
+
+ <div id="rarityFilters"
+      class="tabs"
+      style="grid-template-columns:repeat(6,1fr);margin-top:10px">
+
+  <button data-rarity="ALL" class="rarityFilter active">すべて</button>
+  <button data-rarity="N" class="rarityFilter">N</button>
+  <button data-rarity="R" class="rarityFilter">R</button>
+  <button data-rarity="SR" class="rarityFilter">SR</button>
+  <button data-rarity="SSR" class="rarityFilter">SSR</button>
+  <button data-rarity="UR" class="rarityFilter">UR</button>
+
+ </div>
+
+ <div id="ownedCrews" class="list"></div>
+
+ <button id="gacha" class="action">
   🎴 クルー召喚（500⚡）
  </button>
 
- <div
-  id="crewMsg"
-  class="notice"
- >
-  キャラを集めて、好きなキャラを装備しよう！
+ <div id="crewMsg" class="notice">
+  N / R / SR / SSR / UR のキャラが登場！
  </div>
 
 </section>
-
-
-<!-- 銀河 -->
 
 <section id="galaxy" class="panel hidden">
 
  <div class="card">
-
-  <div>
-   🌌 銀河転生：
-   <b id="rebirth">0</b>回
-  </div>
-
-  <div>
-   永久倍率：×
-   <b id="rebirthMult">1.0</b>
-  </div>
-
+  <div>🌌 銀河転生：<b id="rebirth">0</b>回</div>
+  <div>永久倍率：×<b id="rebirthMult">1.0</b></div>
+  <div>👨‍🚀 装備枠：<b id="slotCount">6</b>体</div>
  </div>
 
- <button
-  id="nextPlanet"
-  class="action"
- >
+ <button id="nextPlanet" class="action">
   🪐 次の惑星
  </button>
 
- <button
-  id="rebirthBtn"
-  class="action danger"
- >
+ <button id="rebirthBtn" class="action danger">
   🌌 銀河転生
  </button>
 
 </section>
-
-
-<!-- 保存 -->
 
 <section id="save" class="panel hidden">
 
@@ -488,16 +231,9 @@ small{
   別の端末・ブラウザでも続きから遊べます。
  </div>
 
- <textarea
-  id="saveCode"
-  rows="4"
-  readonly
- ></textarea>
+ <textarea id="saveCode" rows="4" readonly></textarea>
 
- <button
-  id="makeCode"
-  class="action"
- >
+ <button id="makeCode" class="action">
   セーブコード発行
  </button>
 
@@ -505,16 +241,11 @@ small{
 
  <b>📥 ロード</b>
 
- <textarea
-  id="loadCode"
-  rows="4"
-  placeholder="セーブコードを貼り付け"
- ></textarea>
+ <textarea id="loadCode"
+           rows="4"
+           placeholder="セーブコードを貼り付け"></textarea>
 
- <button
-  id="load"
-  class="action"
- >
+ <button id="load" class="action">
   ロードする
  </button>
 
@@ -527,54 +258,35 @@ small{
   下のボタンから共有できます。
  </div>
 
- <button
-  id="share"
-  class="action"
- >
+ <button id="share" class="action">
   📤 共有する
  </button>
 
 </section>
 
-<div
- id="notice"
- class="notice"
->
+<div id="notice" class="notice">
  🌌 宇宙開拓を始めよう！
 </div>
 
 </div>
 
-
 <script>
 (()=>{
-
 "use strict";
 
 const $=id=>document.getElementById(id);
 
 const fmt=n=>{
  if(!Number.isFinite(n))return "0";
-
- if(Math.abs(n)>=1){
-  return Math.floor(n).toLocaleString("ja-JP");
- }
-
- return n.toLocaleString(
-  "ja-JP",
-  {
-   maximumFractionDigits:2
-  }
- );
+ if(Math.abs(n)>=1)return Math.floor(n).toLocaleString("ja-JP");
+ return n.toLocaleString("ja-JP",{maximumFractionDigits:2});
 };
-
 
 /* =========================
    惑星
 ========================= */
 
 const planets=[
-
  ["🌍","地球"],
  ["🌙","月"],
  ["🔴","火星"],
@@ -583,9 +295,7 @@ const planets=[
  ["🔵","海王星"],
  ["💠","未知の惑星"],
  ["🌌","銀河の中心"]
-
 ];
-
 
 /* =========================
    施設
@@ -593,170 +303,98 @@ const planets=[
 
 const planetFacilities=[
 
- [
+[
+ ["🛰️","宇宙ステーション","クリック +0.4",10,0.4,0],
+ ["🌙","月面研究所","クリック +2",50,2,0],
+ ["🔬","惑星研究センター","クリック +10 / 自動 +1",250,10,1],
+ ["🚀","軌道開発基地","クリック +50 / 自動 +5",1250,50,5],
+ ["🌐","地球圏エネルギー網","クリック +250 / 自動 +25",6250,250,25],
+ ["🌌","地球圏開発ステーション","クリック +1,250 / 自動 +100",31250,1250,100]
+],
 
-  ["🛰️","宇宙ステーション","クリック +0.4",10,0.4,0],
+[
+ ["🛰️","月面基地","クリック +6,250",156250,6250,0],
+ ["⛏️","月面採掘所","クリック +31,250",781250,31250,0],
+ ["⚡","月面エネルギー炉","クリック +156,250",3906250,156250,0],
+ ["🏭","月資源精製所","クリック +781,250",19531250,781250,0],
+ ["🌙","月軌道ステーション","クリック +3,906,250 / 自動 +1",97656250,3906250,1],
+ ["🚀","月面宇宙港","クリック +19,531,250 / 自動 +3",488281250,19531250,3]
+],
 
-  ["🌙","月面研究所","クリック +2",50,2,0],
+[
+ ["🏕️","火星コロニー","クリック +195,312,500",4882812500,195312500,0],
+ ["⛏️","火星鉱山","クリック +244,140,625",6103515625,244140625,0],
+ ["⚡","火星発電施設","クリック +1,220,703,125 / 自動 +5",30517578125,1220703125,5],
+ ["🏭","火星工業都市","クリック +6,103,515,625 / 自動 +20",152587890625,6103515625,20],
+ ["🛰️","火星軌道基地","クリック +30,517,578,125 / 自動 +100",762939453125,30517578125,100],
+ ["🚀","火星宇宙港","クリック +152,587,890,625 / 自動 +500",3814697265625,152587890625,500]
+],
 
-  ["🔬","惑星研究センター","クリック +10 / 自動 +1",250,10,1],
+[
+ ["☁️","木星ガス採取所","クリック +1,525,878,906,250 / 自動 +1,000",38146972656250,1525878906250,1000],
+ ["⚡","木星巨大発電所","クリック +1,907,348,632,812.5 / 自動 +5,000",47683715820312.5,1907348632812.5,5000],
+ ["🛰️","木星軌道ステーション","クリック +9,536,743,164,062.5 / 自動 +25,000",238418579101562,9536743164062.5,25000],
+ ["🌪️","大赤斑エネルギー炉","クリック +47,683,715,332,031.25 / 自動 +150,000",1192092895507812,47683715820312.5,150000],
+ ["🏭","木星圏工業都市","クリック +238,418,579,101,562 / 自動 +1,000,000",5960464477539062,238418579101562,1000000],
+ ["🚀","木星航宙ゲート","クリック +1.192e15 / 自動 +5,000,000",29802322387695312,1192092895507812,5000000]
+],
 
-  ["🚀","軌道開発基地","クリック +50 / 自動 +5",1250,50,5],
+[
+ ["💍","土星リング採掘所","クリック +1.192e16 / 自動 +10,000,000",298023223876953088,1.19209289550781e16,10000000],
+ ["🛰️","土星軌道都市","クリック +1.490e16 / 自動 +50,000,000",372529029846191360,1.49011611938477e16,50000000],
+ ["⚡","土星環発電網","クリック +7.451e16 / 自動 +300,000,000",1862645149230956800,7.45058059692383e16,300000000],
+ ["🏭","土星巨大工業圏","クリック +3.725e17 / 自動 +2,000,000,000",9313225746154784768,3.72529029846191e17,2000000000],
+ ["🚀","土星恒星間港","クリック +1.862e18 / 自動 +20,000,000,000",46566128730773921792,1.86264514923096e18,20000000000],
+ ["🌀","土星重力炉","クリック +9.313e18 / 自動 +100,000,000,000",232830643653869600768,9.31322574615478e18,100000000000]
+],
 
-  ["🌐","地球圏エネルギー網","クリック +250 / 自動 +25",6250,250,25],
+[
+ ["❄️","海王星氷晶鉱山","クリック +9.313e19 / 自動 +1,000,000,000,000",2.3283064365387e21,9.31322574615478e19,1000000000000],
+ ["🌊","海王星流体エネルギー炉","クリック +1.164e20 / 自動 +5,000,000,000,000",2.91038304567337e21,1.16415321826935e20,5000000000000],
+ ["⚡","海王星超電導都市","クリック +5.821e20 / 自動 +50,000,000,000,000",1.45519152283669e22,5.82076609134674e20,50000000000000],
+ ["🛰️","海王星深宇宙基地","クリック +2.910e21 / 自動 +300,000,000,000,000",7.27595761418343e22,2.91038304567337e21,300000000000000],
+ ["🚀","海王星ワープゲート","クリック +1.455e22 / 自動 +2,000,000,000,000,000",3.63797880709171e23,1.45519152283669e22,2000000000000000],
+ ["🌀","海王星時空炉","クリック +7.276e22 / 自動 +1,000,000,000,000,000",1.81898940354586e24,7.27595761418343e22,1000000000000000]
+],
 
-  ["🌌","地球圏開発ステーション","クリック +1,250 / 自動 +100",31250,1250,100]
+[
+ ["💠","未知物質採掘所","クリック +7.276e23 / 自動 +10,000,000,000,000,000",1.81898940354586e25,7.27595761418342e23,10000000000000000],
+ ["🔬","未知粒子研究所","クリック +9.095e23 / 自動 +50,000,000,000,000,000",2.27373675443232e25,9.09494701772928e23,50000000000000000],
+ ["⚡","異常エネルギー炉","クリック +4.547e24 / 自動 +300,000,000,000,000,000",1.13686837721616e26,4.54747350886464e24,300000000000000000],
+ ["🛰️","未知文明観測所","クリック +2.274e25 / 自動 +2,000,000,000,000,000,000",5.6843418860808e26,2.27373675443232e25,2000000000000000000],
+ ["🚀","次元航行ゲート","クリック +1.137e26 / 自動 +10,000,000,000,000,000,000",2.8421709430404e27,1.13686837721616e26,10000000000000000000],
+ ["🌀","未知次元炉","クリック +5.684e26 / 自動 +10,000,000,000,000,000,000,000",1.4210854715202e28,5.6843418860808e26,1e22]
+],
 
- ],
-
- [
-
-  ["🛰️","月面基地","クリック +6,250",156250,6250,0],
-
-  ["⛏️","月面採掘所","クリック +31,250",781250,31250,0],
-
-  ["⚡","月面エネルギー炉","クリック +156,250",3906250,156250,0],
-
-  ["🏭","月資源精製所","クリック +781,250",19531250,781250,0],
-
-  ["🌙","月軌道ステーション","クリック +3,906,250 / 自動 +1",97656250,3906250,1],
-
-  ["🚀","月面宇宙港","クリック +19,531,250 / 自動 +3",488281250,19531250,3]
-
- ],
-
- [
-
-  ["🏕️","火星コロニー","クリック +195,312,500",4882812500,195312500,0],
-
-  ["⛏️","火星鉱山","クリック +244,140,625",6103515625,244140625,0],
-
-  ["⚡","火星発電施設","クリック +1,220,703,125 / 自動 +5",30517578125,1220703125,5],
-
-  ["🏭","火星工業都市","クリック +6,103,515,625 / 自動 +20",152587890625,6103515625,20],
-
-  ["🛰️","火星軌道基地","クリック +30,517,578,125 / 自動 +100",762939453125,30517578125,100],
-
-  ["🚀","火星宇宙港","クリック +152,587,890,625 / 自動 +500",3814697265625,152587890625,500]
-
- ],
-
- [
-
-  ["☁️","木星ガス採取所","クリック +1,525,878,906,250 / 自動 +1,000",38146972656250,1525878906250,1000],
-
-  ["⚡","木星巨大発電所","クリック +1907348632812.5 / 自動 +5,000",47683715820312.5,1907348632812.5,5000],
-
-  ["🛰️","木星軌道ステーション","クリック +9536743164062.5 / 自動 +25,000",238418579101562,9536743164062.5,25000],
-
-  ["🌪️","大赤斑エネルギー炉","クリック +47683715820312.5 / 自動 +150,000",1.19209289550781e+15,47683715820312.5,150000],
-
-  ["🏭","木星圏工業都市","クリック +238418579101562 / 自動 +1,000,000",5960464477539062,238418579101562,1000000],
-
-  ["🚀","木星航宙ゲート","クリック +1.19209289550781e+15 / 自動 +5,000,000",29802322387695312,1.19209289550781e+15,5000000]
-
- ],
-
- [
-
-  ["💍","土星リング採掘所","クリック +11,920,928,955,078,124 / 自動 +10,000,000",298023223876953088,1.19209289550781e+16,10000000],
-
-  ["🛰️","土星軌道都市","クリック +14,901,161,193,847,654 / 自動 +50,000,000",372529029846191360,1.49011611938477e+16,50000000],
-
-  ["⚡","土星環発電網","クリック +74,505,805,969,238,272 / 自動 +300,000,000",1862645149230956800,7.45058059692383e+16,300000000],
-
-  ["🏭","土星巨大工業圏","クリック +372,529,029,846,191,360 / 自動 +2,000,000,000",9313225746154784768,3.72529029846191e+17,2000000000],
-
-  ["🚀","土星恒星間港","クリック +1,862,645,149,230,956,800 / 自動 +20,000,000,000",46566128730773921792,1.86264514923096e+18,20000000000],
-
-  ["🌀","土星重力炉","クリック +9,313,225,746,154,784,768 / 自動 +100,000,000,000",232830643653869600768,9.31322574615478e+18,100000000000]
-
- ],
-
- [
-
-  ["❄️","海王星氷晶鉱山","クリック +93,132,257,461,547,843,584 / 自動 +1,000,000,000,000",2.3283064365387e+21,9.31322574615478e+19,1000000000000],
-
-  ["🌊","海王星流体エネルギー炉","クリック +116,415,321,826,934,800,384 / 自動 +5,000,000,000,000",2.91038304567337e+21,1.16415321826935e+20,5000000000000],
-
-  ["⚡","海王星超電導都市","クリック +582,076,609,134,674,051,072 / 自動 +50,000,000,000,000",1.45519152283669e+22,5.82076609134674e+20,50000000000000],
-
-  ["🛰️","海王星深宇宙基地","クリック +2,910,383,045,673,369,993,216 / 自動 +300,000,000,000,000",7.27595761418343e+22,2.91038304567337e+21,300000000000000],
-
-  ["🚀","海王星ワープゲート","クリック +14,551,915,228,366,851,014,656 / 自動 +2,000,000,000,000,000",3.63797880709171e+23,1.45519152283669e+22,2000000000000000],
-
-  ["🌀","海王星時空炉","クリック +72,759,576,141,834,255,073,280 / 自動 +1,000,000,000,000,000",1.81898940354586e+24,7.27595761418343e+22,1000000000000000]
-
- ],
-
- [
-
-  ["💠","未知物質採掘所","クリック +727,595,761,418,342,433,292,288 / 自動 +10,000,000,000,000,000",1.81898940354586e+25,7.27595761418342e+23,10000000000000000],
-
-  ["🔬","未知粒子研究所","クリック +909,494,701,772,928,008,060,928 / 自動 +50,000,000,000,000,000",2.27373675443232e+25,9.09494701772928e+23,50000000000000000],
-
-  ["⚡","異常エネルギー炉","クリック +4,547,473,508,864,640,442,957,824 / 自動 +300,000,000,000,000,000",1.13686837721616e+26,4.54747350886464e+24,300000000000000000],
-
-  ["🛰️","未知文明観測所","クリック +22,737,367,544,323,201,141,047,296 / 自動 +2,000,000,000,000,000,000",5.6843418860808e+26,2.27373675443232e+25,2000000000000000000],
-
-  ["🚀","次元航行ゲート","クリック +113,686,837,721,616,005,705,236,480 / 自動 +10,000,000,000,000,000,000",2.8421709430404e+27,1.13686837721616e+26,10000000000000000000],
-
-  ["🌀","未知次元炉","クリック +568,434,188,608,080,097,245,659,136 / 自動 +10,000,000,000,000,000,000,000",1.4210854715202e+28,5.6843418860808e+26,1e+22]
-
- ],
-
- [
-
-  ["🌌","銀河中心採掘網","クリック +5,684,341,886,080,800,422,700,777,472 / 自動 +100,000,000,000,000,000,000,000",1.4210854715202e+29,5.6843418860808e+27,1e+23],
-
-  ["🕳️","超巨大ブラックホール炉","クリック +7,105,427,357,601,001,078,131,785,728 / 自動 +5,000,000,000,000,000,000,000,000",1.77635683940025e+29,7.105427357601e+27,5e+24],
-
-  ["✨","恒星群エネルギー網","クリック +35,527,136,788,005,005,390,658,928,640 / 自動 +30,000,000,000,000,000,000,000,000",8.88178419700125e+29,3.5527136788005e+28,3e+25],
-
-  ["🌀","銀河時空制御装置","クリック +177,635,683,940,025,062,137,666,732,032 / 自動 +200,000,000,000,000,000,000,000,000",4.44089209850063e+30,1.77635683940025e+29,2e+26],
-
-  ["🌠","銀河文明中枢","クリック +888,178,419,700,125,310,688,333,660,160 / 自動 +1,000,000,000,000,000,000,000,000,000",2.22044604925031e+31,8.88178419700125e+29,1e+27],
-
-  ["♾️","宇宙創成炉","クリック +4,440,892,098,500,626,131,229,203,234,816 / 自動 +10,000,000,000,000,000,000,000,000,000",1.11022302462516e+32,4.44089209850063e+30,1e+28]
-
- ]
+[
+ ["🌌","銀河中心採掘網","クリック +5.684e27 / 自動 +100,000,000,000,000,000,000,000",1.4210854715202e29,5.6843418860808e27,1e23],
+ ["🕳️","超巨大ブラックホール炉","クリック +7.105e27 / 自動 +5,000,000,000,000,000,000,000,000",1.77635683940025e29,7.105427357601e27,5e24],
+ ["✨","恒星群エネルギー網","クリック +3.553e28 / 自動 +30,000,000,000,000,000,000,000,000",8.881784197001e29,3.5527136788005e28,3e25],
+ ["🌀","銀河時空制御装置","クリック +1.776e29 / 自動 +200,000,000,000,000,000,000,000,000",4.44089209850063e30,1.77635683940025e29,2e26],
+ ["🌠","銀河文明中枢","クリック +8.882e29 / 自動 +1,000,000,000,000,000,000,000,000,000",2.22044604925031e31,8.88178419700125e29,1e27],
+ ["♾️","宇宙創成炉","クリック +4.441e30 / 自動 +10,000,000,000,000,000,000,000,000,000",1.11022302462516e32,4.44089209850063e30,1e28]
+]
 
 ];
 
-
-const facilities=
-planetFacilities.flatMap(
- (list,pi)=>
- list.map(
-  (x,i)=>({
-
-   id:`p${pi}_${i}`,
-
-   planet:pi,
-
-   icon:x[0],
-
-   name:x[1],
-
-   desc:x[2],
-
-   baseCost:x[3],
-
-   click:x[4],
-
-   auto:x[5]
-
-  })
- )
+const facilities=planetFacilities.flatMap((list,pi)=>
+ list.map((x,i)=>({
+  id:`p${pi}_${i}`,
+  planet:pi,
+  icon:x[0],
+  name:x[1],
+  desc:x[2],
+  baseCost:x[3],
+  click:x[4],
+  auto:x[5]
+ }))
 );
 
-
 /* =========================
-   キャラクター
+   探検メンバー
 ========================= */
 
 const crews=[
-
  {
   icon:"👨‍🚀",
   name:"新人宇宙飛行士",
@@ -765,25 +403,22 @@ const crews=[
   auto:1,
   desc:"基本能力のみ。"
  },
-
  {
   icon:"🔧",
   name:"天才エンジニア",
   r:"R",
   click:1.5,
   auto:1.5,
-  desc:"施設による生産量が50%アップ。"
+  desc:"クリック・自動生産が強化。"
  },
-
  {
   icon:"🤖",
   name:"採掘ロボ・X",
   r:"SR",
   click:1,
   auto:3,
-  desc:"自動生産が200%アップ。"
+  desc:"自動生産が3倍。"
  },
-
  {
   icon:"👽",
   name:"未知の異星人",
@@ -793,16 +428,14 @@ const crews=[
   desc:"クリック時10%で5倍。",
   lucky:true
  },
-
  {
   icon:"🧑‍🚀",
   name:"銀河探検家",
   r:"SSR",
   click:2.5,
   auto:2,
-  desc:"すべての獲得量が2.5倍。"
+  desc:"クリック・自動生産が大幅強化。"
  },
-
  {
   icon:"👑",
   name:"銀河皇帝",
@@ -812,60 +445,70 @@ const crews=[
   desc:"クリック時20%で10倍。",
   royal:true
  }
-
 ];
 
-
 /* =========================
-   初期データ
+   セーブデータ
 ========================= */
 
 const fresh=()=>({
-
  energy:0,
-
  total:0,
-
  planet:0,
-
  rebirth:0,
-
- planetCost:1000,
-
+ planetCost:0,
  rebirthCost:100000,
 
- crew:0,
+ /* 複数装備 */
+ equipped:[0],
 
- /* 所持キャラ
-    0 = 新人宇宙飛行士 */
- owned:{
-  0:1
- },
+ /* 所持 */
+ owned:[0],
 
  fac:{}
-
 });
 
 let s=fresh();
 
-let rarityFilter="ALL";
-
-
 /* =========================
-   基本計算
+   装備枠
 ========================= */
 
-function multiplier(){
-
- return 1+s.rebirth*.5
-
+function equipSlots(){
+ return 6+s.rebirth;
 }
 
+/* =========================
+   装備メンバーの倍率
+========================= */
+
+function crewMultipliers(){
+
+ let click=1;
+ let auto=1;
+
+ const equipped=Array.isArray(s.equipped)?s.equipped:[];
+
+ for(const id of equipped){
+
+  const c=crews[id];
+
+  if(!c)continue;
+
+  click*=c.click;
+  auto*=c.auto;
+ }
+
+ return {click,auto};
+}
+
+/* =========================
+   施設合計
+========================= */
 
 function totals(){
 
  let click=0;
-
  let auto=0;
 
  for(const f of facilities){
@@ -873,358 +516,387 @@ function totals(){
   const n=s.fac[f.id]||0;
 
   click+=f.click*n;
-
   auto+=f.auto*n;
-
  }
 
- return{
-  click,
-  auto
- };
-
+ return {click,auto};
 }
-
-
-function facilityCost(f){
-
- return f.baseCost;
-
-}
-
-
-function notify(t){
-
- $("notice").textContent=t
-
-}
-
 
 /* =========================
-   キャラ画面
+   転生倍率
 ========================= */
 
-function renderCrew(){
+function multiplier(){
+ return 1+s.rebirth*.5;
+}
 
- const equipped=crews[s.crew]||crews[0];
+/* =========================
+   現在のクリック力
+========================= */
 
+function currentClickPower(){
 
- /* 装備中 */
+ const t=totals();
+ const cm=crewMultipliers();
 
- $("equippedCrew").innerHTML=`
+ return (1+t.click)*multiplier()*cm.click;
+}
 
-  <div class="crew-main">
+/* =========================
+   次惑星価格
+=========================
 
-   <div class="crew-avatar">
-    ${equipped.icon}
-   </div>
+「現在惑星の最強施設を1回購入した後、
+その状態で約3000クリックした量」
 
-   <div class="crew-info">
+を次惑星価格にする。
+*/
+
+function calculatePlanetCost(){
+
+ if(s.planet>=planets.length-1)return Infinity;
+
+ const currentFacilities=facilities.filter(
+  f=>f.planet===s.planet
+ );
+
+ const strongest=currentFacilities[currentFacilities.length-1];
+
+ if(!strongest)return 1000;
+
+ const afterUpgradeClick=
+  currentClickPower()+strongest.click*multiplier()*crewMultipliers().click;
+
+ return Math.ceil(
+  strongest.baseCost+
+  afterUpgradeClick*3000
+ );
+}
+
+/* =========================
+   通知
+========================= */
+
+function notify(t){
+ $("notice").textContent=t;
+}
+
+/* =========================
+   キャラ表示
+========================= */
+
+let rarityFilter="ALL";
+
+function renderEquipped(){
+
+ const box=$("equippedCrew");
+
+ const equipped=
+  Array.isArray(s.equipped)?s.equipped:[];
+
+ $("equipCount").textContent=
+  equipped.length+" / "+equipSlots()+"体";
+
+ let html="";
+
+ for(let i=0;i<equipSlots();i++){
+
+  const id=equipped[i];
+
+  if(id===undefined){
+
+   html+=`
+    <div class="equip-slot empty">
+     ⭕ 空き装備枠
+    </div>
+   `;
+
+  }else{
+
+   const c=crews[id];
+
+   if(!c)continue;
+
+   html+=`
+    <div class="equip-slot">
+     <div class="row">
+      <b>${c.icon} ${c.name}</b>
+      <span class="badge">${c.r}</span>
+     </div>
+     <div class="desc">
+      クリック×${c.click} / 自動×${c.auto}
+     </div>
+     <button
+      class="action unequip"
+      data-unequip="${id}">
+      ❌ 装備解除
+     </button>
+    </div>
+   `;
+  }
+ }
+
+ box.innerHTML=html;
+
+ box.querySelectorAll("[data-unequip]").forEach(btn=>{
+  btn.onclick=()=>{
+   unequipCrew(Number(btn.dataset.unequip));
+  };
+ });
+}
+
+/* =========================
+   所持キャラ
+========================= */
+
+function renderOwnedCrews(){
+
+ const box=$("ownedCrews");
+
+ const owned=
+  [...new Set(
+   (s.owned||[])
+   .filter(i=>Number.isInteger(i)&&crews[i])
+  )];
+
+ const filtered=
+  rarityFilter==="ALL"
+  ?owned
+  :owned.filter(i=>crews[i].r===rarityFilter);
+
+ box.innerHTML=filtered.length
+ ?filtered.map(i=>{
+
+   const c=crews[i];
+
+   const equipped=
+    Array.isArray(s.equipped)&&
+    s.equipped.includes(i);
+
+   const full=
+    Array.isArray(s.equipped)&&
+    s.equipped.length>=equipSlots();
+
+   return `
+   <div class="crew-card">
 
     <div class="row">
 
-     <span class="name">
-      ${equipped.name}
-     </span>
-
-     <span class="badge">
-      ${equipped.r}
-     </span>
-
-    </div>
-
-    <div class="desc">
-
-     クリック ×${equipped.click}
-     /
-     自動 ×${equipped.auto}
-
-     <br>
-
-     ${equipped.desc}
-
-    </div>
-
-   </div>
-
-  </div>
-
- `;
-
-
- /* 所持メンバー */
-
- const ids=
-  Object.keys(s.owned||{})
-  .map(Number)
-  .filter(i=>crews[i]);
-
-
- const filtered=
-  ids.filter(
-   i=>
-    rarityFilter==="ALL"
-    ||
-    crews[i].r===rarityFilter
-  );
-
-
- $("ownedCrews").innerHTML=
-
- filtered.length
-
- ?
-
- filtered.map(i=>{
-
-  const c=crews[i];
-
-  const eq=i===s.crew;
-
-  const count=s.owned[i]||1;
-
-  return `
-
-   <div class="crew-card ${eq?"equipped":""}">
-
-    <div class="crew-main">
-
-     <div class="crew-avatar">
-      ${c.icon}
-     </div>
-
-     <div class="crew-info">
-
-      <div class="row">
-
-       <span class="name">
-        ${c.name}
-       </span>
-
-       <span class="badge">
-        ${c.r}
-       </span>
-
+     <div>
+      <div class="name">
+       ${c.icon} ${c.name}
       </div>
 
       <div class="desc">
-
-       クリック ×${c.click}
+       クリック×${c.click}
        /
-       自動 ×${c.auto}
-
+       自動×${c.auto}
        <br>
-
        ${c.desc}
-
-       <br>
-
-       所持数：${count}
-
       </div>
-
      </div>
 
-    </div>
-
-    <div class="crew-actions">
-
-     <button
-      type="button"
-      class="action equip-btn"
-      data-id="${i}"
-      ${eq?"disabled":""}
-     >
-      ${eq?"✅ 装備中":"⚙️ 装備する"}
-     </button>
+     <span class="badge">
+      ${c.r}
+     </span>
 
     </div>
+
+    <button
+     class="action equip-button"
+     data-crew="${i}"
+     ${equipped||full?"disabled":""}>
+
+     ${
+      equipped
+      ?"✅ 装備中"
+      :full
+      ?"🔒 装備枠がいっぱい"
+      :"⚙️ 装備する"
+     }
+
+    </button>
 
    </div>
-
-  `;
+   `;
 
  }).join("")
+ :`
+ <div class="notice">
+  このレア度のキャラはまだ所持していません。
+ </div>
+ `;
 
- :
-
- `<div class="empty">
-   このレア度のキャラはまだ持っていません。
-  </div>`;
-
-
- document
-  .querySelectorAll(".equip-btn")
-  .forEach(b=>{
-
-   b.onclick=()=>{
-
-    const id=Number(b.dataset.id);
-
-    if(!s.owned[id])return;
-
-    s.crew=id;
-
-    notify(
-     "⚙️ "+
-     crews[id].name+
-     "を装備しました！"
-    );
-
-    render();
-
-   };
-
-  });
-
+ box.querySelectorAll("[data-crew]").forEach(btn=>{
+  btn.onclick=()=>{
+   equipCrew(Number(btn.dataset.crew));
+  };
+ });
 }
 
+/* =========================
+   装備
+========================= */
 
-/* レア度フィルター */
+function equipCrew(id){
 
-document
- .querySelectorAll("#rarityFilters button")
- .forEach(b=>{
+ if(!crews[id])return;
 
-  b.onclick=()=>{
+ if(!Array.isArray(s.owned)||!s.owned.includes(id)){
+  return;
+ }
 
-   rarityFilter=b.dataset.rarity;
+ if(!Array.isArray(s.equipped)){
+  s.equipped=[];
+ }
 
-   document
-    .querySelectorAll("#rarityFilters button")
-    .forEach(x=>
-     x.classList.toggle(
-      "active",
-      x===b
-     )
-    );
+ if(s.equipped.includes(id)){
+  notify("すでに装備しています！");
+  return;
+ }
 
-   renderCrew();
+ if(s.equipped.length>=equipSlots()){
+  notify("⚠️ 装備枠がいっぱいです！");
+  return;
+ }
 
-  };
+ s.equipped.push(id);
 
- });
+ const c=crews[id];
 
+ $("crewMsg").textContent=
+  "⚙️ 「"+c.name+"」を装備しました！";
+
+ notify(
+  "⚙️ "+c.name+
+  "を装備！"
+ );
+
+ render();
+}
+
+function unequipCrew(id){
+
+ if(!Array.isArray(s.equipped))return;
+
+ s.equipped=
+  s.equipped.filter(x=>x!==id);
+
+ const c=crews[id];
+
+ $("crewMsg").textContent=
+  "「"+c.name+"」を装備解除しました。";
+
+ notify(
+  "❌ "+c.name+"を装備解除！"
+ );
+
+ render();
+}
 
 /* =========================
-   全体描画
+   メイン描画
 ========================= */
 
 function render(){
 
- const c=crews[s.crew]||crews[0];
-
  const t=totals();
-
+ const cm=crewMultipliers();
  const m=multiplier();
 
+ const clickPower=
+  (1+t.click)*m*cm.click;
+
+ const autoPower=
+  t.auto*m*cm.auto;
 
  $("energy").textContent=
   fmt(s.energy);
 
-
  $("clickPower").textContent=
-  "+"+
-  fmt(
-   (1+t.click)*
-   m*
-   c.click
-  );
-
+  "+"+fmt(clickPower);
 
  $("autoPower").textContent=
-  fmt(
-   t.auto*
-   m*
-   c.auto
-  );
-
+  fmt(autoPower);
 
  $("planetName").textContent=
-  planets[s.planet][0]+
-  " "+
+  planets[s.planet][0]+" "+
   planets[s.planet][1];
-
 
  $("planet").textContent=
   planets[s.planet][0];
 
-
  $("rebirth").textContent=
   s.rebirth;
-
 
  $("rebirthMult").textContent=
   m.toFixed(1);
 
+ $("slotCount").textContent=
+  equipSlots();
 
- renderCrew();
+ $("ownedCount").textContent=
+  (s.owned||[]).length+"体";
 
+ renderEquipped();
+ renderOwnedCrews();
+
+ /* =========================
+    次惑星価格を毎回計算
+ ========================= */
+
+ s.planetCost=
+  calculatePlanetCost();
 
  $("nextPlanet").disabled=
-  s.planet>=planets.length-1
-  ||
+  s.planet>=planets.length-1||
   s.energy<s.planetCost;
 
-
  $("nextPlanet").textContent=
-
   s.planet>=planets.length-1
-
-  ?
-
-  "🌌 銀河の中心に到達済み"
-
-  :
-
-  "🪐 次の惑星（"+
-  fmt(s.planetCost)+
-  "⚡）";
-
+  ?"🌌 銀河の中心に到達済み"
+  :"🪐 次の惑星（"+
+   fmt(s.planetCost)+
+   "⚡）";
 
  $("rebirthBtn").disabled=
   s.energy<s.rebirthCost;
-
 
  $("rebirthBtn").textContent=
   "🌌 銀河転生（"+
   fmt(s.rebirthCost)+
   "⚡）";
 
-
  $("gacha").disabled=
   s.energy<500;
 
+ /* =========================
+    施設
+ ========================= */
 
  const currentFacilities=
   facilities.filter(
    f=>f.planet===s.planet
   );
 
-
  $("facilities").innerHTML=
+  currentFacilities.map(f=>{
 
- currentFacilities.map(f=>{
+   const n=s.fac[f.id]||0;
+   const p=f.baseCost;
 
-  const n=s.fac[f.id]||0;
-
-  const p=facilityCost(f);
-
-  return `
-
+   return `
    <button
     class="item"
     data-id="${f.id}"
-    ${s.energy<p?"disabled":""}
-   >
+    ${s.energy<p?"disabled":""}>
 
     <div class="row">
 
      <span>
 
       <span class="name">
-       ${f.icon}
-       ${f.name}
+       ${f.icon} ${f.name}
       </span>
 
       <span class="badge">
@@ -1244,23 +916,18 @@ function render(){
     </div>
 
    </button>
+   `;
 
-  `;
-
- }).join("");
-
+  }).join("");
 
  document
   .querySelectorAll(".item")
-  .forEach(b=>
-   b.onclick=
-   ()=>buyFacility(
-    b.dataset.id
-   )
-  );
-
+  .forEach(b=>{
+   b.onclick=()=>{
+    buyFacility(b.dataset.id);
+   };
+  });
 }
-
 
 /* =========================
    施設購入
@@ -1269,33 +936,27 @@ function render(){
 function buyFacility(id){
 
  const f=
-  facilities.find(
-   x=>x.id===id
-  );
+  facilities.find(x=>x.id===id);
 
  if(!f)return;
 
- const p=
-  facilityCost(f);
+ const p=f.baseCost;
 
  if(s.energy<p)return;
 
  s.energy-=p;
 
- s.fac[id]=
-  (s.fac[id]||0)+1;
+ s.fac[f.id]=
+  (s.fac[f.id]||0)+1;
 
  notify(
   f.icon+
-  " "+
-  f.name+
+  " "+f.name+
   "を建設！"
  );
 
  render();
-
 }
-
 
 /* =========================
    惑星クリック
@@ -1303,49 +964,41 @@ function buyFacility(id){
 
 $("planet").onclick=()=>{
 
- const c=
-  crews[s.crew]||crews[0];
-
  const t=totals();
+ const cm=crewMultipliers();
 
  let gain=
   (1+t.click)*
   multiplier()*
-  c.click;
+  cm.click;
 
+ const equipped=
+  Array.isArray(s.equipped)
+  ?s.equipped
+  :[];
 
- /* 未知の異星人 */
+ /* 特殊能力 */
 
- if(
-  c.lucky&&
-  Math.random()<.10
- ){
+ for(const id of equipped){
 
-  gain*=5;
+  const c=crews[id];
 
+  if(!c)continue;
+
+  if(c.lucky&&Math.random()<.10){
+   gain*=5;
+  }
+
+  if(c.royal&&Math.random()<.20){
+   gain*=10;
+  }
  }
-
-
- /* 銀河皇帝 */
-
- if(
-  c.royal&&
-  Math.random()<.20
- ){
-
-  gain*=10;
-
- }
-
 
  s.energy+=gain;
-
  s.total+=gain;
 
  render();
-
 };
-
 
 /* =========================
    次の惑星
@@ -1354,30 +1007,27 @@ $("planet").onclick=()=>{
 $("nextPlanet").onclick=()=>{
 
  if(
-  s.planet>=planets.length-1
-  ||
+  s.planet>=planets.length-1||
   s.energy<s.planetCost
  )return;
 
- s.energy-=s.planetCost;
+ const cost=s.planetCost;
+
+ s.energy-=cost;
 
  s.planet++;
 
  s.planetCost=
-  Math.ceil(
-   s.planetCost*4
-  );
+  calculatePlanetCost();
 
  notify(
   "🪐 "+
   planets[s.planet][1]+
-  "を開拓！新しい施設群が解禁！"
+  "を開拓！"
  );
 
  render();
-
 };
-
 
 /* =========================
    銀河転生
@@ -1387,66 +1037,57 @@ $("rebirthBtn").onclick=()=>{
 
  if(s.energy<s.rebirthCost)return;
 
+ const oldOwned=
+  [...(s.owned||[])];
 
- /*
-  銀河転生でリセットするのは
-
-  ・エネルギー
-  ・惑星進行
-  ・施設
-
-  キャラクター所持状況と
-  装備中キャラは維持
- */
-
- const currentCrew=
-  s.crew;
-
- const currentOwned=
-  {...s.owned};
-
+ const oldEquipped=
+  [...(s.equipped||[])];
 
  s.energy=0;
-
  s.planet=0;
-
- s.planetCost=1000;
-
  s.rebirth++;
 
- s.rebirthCost=
+ /*
+   転生しても探検メンバーは永久保持
+ */
 
-  s.rebirth<3
+ s.owned=oldOwned;
 
-  ?
-
-  Math.ceil(
-   s.rebirthCost*3
-  )
-
-  :
-
-  Math.ceil(
-   s.rebirthCost*10000
+ s.equipped=
+  oldEquipped.filter(
+   id=>s.owned.includes(id)
   );
 
  s.fac={};
 
- s.crew=
-  currentCrew;
+ /*
+   転生コスト
+ */
 
- s.owned=
-  currentOwned;
+ s.rebirthCost=
+  s.rebirth<3
+  ?Math.ceil(s.rebirthCost*3)
+  :Math.ceil(s.rebirthCost*10000);
 
+ /*
+   装備枠は
+   6 + 転生回数
+ */
+
+ s.planetCost=
+  calculatePlanetCost();
+
+ $("crewMsg").textContent=
+  "探検メンバーはそのままです。";
 
  notify(
-  "🌌 銀河転生！探検メンバーはそのまま！永久倍率が上がった！"
+  "🌌 銀河転生！"+
+  "装備枠が"+equipSlots()+
+  "体になりました！"
  );
 
  render();
-
 };
-
 
 /* =========================
    ガチャ
@@ -1458,106 +1099,80 @@ $("gacha").onclick=()=>{
 
  s.energy-=500;
 
-
  const x=Math.random();
 
+ let i;
 
- /*
-  UR 1%
-  SSR 4%
-  SR 10%
-  R 25%
-  N 60%
- */
-
- const i=
-
-  x<.01
-  ?5
-
-  :
-
-  x<.05
-  ?4
-
-  :
-
-  x<.15
-  ?(
-   Math.random()<.5
-   ?2
-   :3
-  )
-
-  :
-
-  x<.40
-  ?1
-
-  :
-
-  0;
-
+ if(x<.01){
+  i=5;       // UR 1%
+ }else if(x<.05){
+  i=4;       // SSR 4%
+ }else if(x<.15){
+  i=Math.random()<.5?2:3; // SR 10%
+ }else if(x<.40){
+  i=1;       // R 25%
+ }else{
+  i=0;       // N 60%
+ }
 
  const c=crews[i];
 
- const already=
-  !!s.owned[i];
-
-
- /*
-  重要：
-  ここでは絶対に
-  s.crew=i
-  をしない。
-
-  ガチャで出ても
-  装備は変わらない。
- */
-
- s.owned[i]=
-  (s.owned[i]||0)+1;
-
-
- if(already){
+ if(!s.owned.includes(i)){
+  s.owned.push(i);
 
   $("crewMsg").textContent=
-
-   "🎴 "+
-   c.icon+
-   " "+
-   c.r+
-   "「"+
-   c.name+
-   "」が出ました！所持数が増えました。";
-
-  notify(
-   "🎴 同じキャラをもう一度獲得！"
-  );
+   "🎉 "+c.icon+
+   " "+c.r+
+   "「"+c.name+
+   "」を獲得！所持メンバーに追加しました。";
 
  }else{
 
   $("crewMsg").textContent=
-
-   "🎉 "+
-   c.icon+
-   " "+
-   c.r+
-   "「"+
-   c.name+
-   "」を獲得！装備は変更されません。";
-
-  notify(
-   "📦 新しい探検メンバーを獲得！"
-  );
-
+   "🎴 "+c.r+
+   "「"+c.name+
+   "」が出ました！"+
+   "すでに所持しています。";
  }
 
+ /*
+   ガチャでは自動装備しない
+ */
+
+ notify(
+  "🎴 "+c.r+
+  "「"+c.name+"」を獲得！"
+ );
 
  render();
-
 };
 
+/* =========================
+   レア度フィルター
+========================= */
+
+document
+ .querySelectorAll(".rarityFilter")
+ .forEach(b=>{
+
+  b.onclick=()=>{
+
+   rarityFilter=
+    b.dataset.rarity;
+
+   document
+    .querySelectorAll(".rarityFilter")
+    .forEach(x=>{
+     x.classList.toggle(
+      "active",
+      x===b
+     );
+    });
+
+   renderOwnedCrews();
+  };
+
+ });
 
 /* =========================
    タブ
@@ -1571,34 +1186,23 @@ document
 
    document
     .querySelectorAll(".tab")
-    .forEach(x=>
-     x.classList.remove(
-      "active"
-     )
-    );
+    .forEach(x=>{
+     x.classList.remove("active");
+    });
 
    b.classList.add("active");
 
-
-   [
-    "build",
-    "crew",
-    "galaxy",
-    "save"
-   ]
-   .forEach(x=>
-
+   ["build","crew","galaxy","save"]
+   .forEach(x=>{
     $(x).classList.toggle(
      "hidden",
      x!==b.dataset.tab
-    )
-
-   );
+    );
+   });
 
   };
 
  });
-
 
 /* =========================
    セーブ
@@ -1611,27 +1215,21 @@ function encode(){
    encodeURIComponent(
     JSON.stringify({
      ...s,
-     saveVersion:6
+     saveVersion:7
     })
    )
   )
  );
-
 }
-
 
 function decode(v){
 
  return JSON.parse(
   decodeURIComponent(
-   escape(
-    atob(v.trim())
-   )
+   escape(atob(v.trim()))
   )
  );
-
 }
-
 
 $("makeCode").onclick=()=>{
 
@@ -1641,9 +1239,7 @@ $("makeCode").onclick=()=>{
  notify(
   "💾 セーブコードを発行！"
  );
-
 };
-
 
 /* =========================
    ロード
@@ -1658,139 +1254,124 @@ $("load").onclick=()=>{
     $("loadCode").value
    );
 
-
   if(
-   typeof n.energy!=="number"
-   ||
+   typeof n.energy!=="number"||
    !n.fac
   ){
-
    throw Error();
-
   }
 
-
-  const migrated={
+  s={
    ...fresh(),
    ...n,
-   fac:{},
-   owned:{0:1}
+   fac:n.fac
   };
 
+  /*
+    古い1人装備データ対応
+  */
 
-  for(
-   const [k,v]
-   of Object.entries(
-    n.fac||{}
-   )
-  ){
+  if(!Array.isArray(s.owned)){
 
    if(
-    typeof v==="number"
-    &&
-    Number.isFinite(v)
+    Number.isInteger(n.crew)
    ){
+    s.owned=[n.crew];
+   }else{
+    s.owned=[0];
+   }
+  }
 
-    migrated.fac[k]=v;
+  s.owned=[
+   ...new Set(
+    s.owned.filter(
+     i=>Number.isInteger(i)&&crews[i]
+    )
+   )
+  ];
 
+  if(!s.owned.length){
+   s.owned=[0];
+  }
+
+  /*
+    古いcrewから装備を復元
+  */
+
+  if(!Array.isArray(n.equipped)){
+
+   if(
+    Number.isInteger(n.crew)&&
+    s.owned.includes(n.crew)
+   ){
+    s.equipped=[n.crew];
+   }else{
+    s.equipped=[0];
    }
 
-  }
+  }else{
 
+   s.equipped=[
+    ...new Set(
+     n.equipped.filter(
+      i=>Number.isInteger(i)&&
+      s.owned.includes(i)&&
+      crews[i]
+     )
+    )
+   ];
+
+  }
 
   /*
-   新方式の所持データ
+    装備枠を超えていた場合は切る
   */
 
-  if(
-   n.owned&&
-   typeof n.owned==="object"&&
-   !Array.isArray(n.owned)
-  ){
-
-   migrated.owned={
-    ...migrated.owned,
-    ...n.owned
-   };
-
-  }
-
-
-  /*
-   旧方式のセーブデータから
-   現在装備していたキャラを
-   所持キャラとして追加
-  */
-
-  else if(
-   Array.isArray(n.owned)
-  ){
-
-   n.owned.forEach(i=>{
-
-    if(crews[i]){
-
-     migrated.owned[i]=
-      (migrated.owned[i]||0)+1;
-
-    }
-
-   });
-
-  }
-
-
-  /*
-   旧セーブでは
-   crewだけ保存されていたため、
-   そのキャラも所持扱いにする
-  */
+  s.equipped=
+   s.equipped.slice(
+    0,
+    equipSlots()
+   );
 
   if(
-   Number.isInteger(n.crew)
-   &&
-   crews[n.crew]
+   !Number.isFinite(s.energy)
   ){
-
-   migrated.crew=
-    n.crew;
-
-   migrated.owned[n.crew]=
-    (migrated.owned[n.crew]||0);
-
+   s.energy=0;
   }
-
 
   if(
-   !crews[migrated.crew]
+   !Number.isInteger(s.planet)||
+   s.planet<0
   ){
-
-   migrated.crew=0;
-
+   s.planet=0;
   }
 
+  s.planet=
+   Math.min(
+    planets.length-1,
+    s.planet
+   );
 
-  s=migrated;
-
+  if(
+   !Number.isInteger(s.rebirth)||
+   s.rebirth<0
+  ){
+   s.rebirth=0;
+  }
 
   notify(
    "📥 ロード成功！"
   );
 
-
   render();
-
 
  }catch(e){
 
   notify(
    "⚠️ セーブコードが正しくありません。"
   );
-
  }
-
 };
-
 
 /* =========================
    共有
@@ -1801,56 +1382,38 @@ $("share").onclick=async()=>{
  const text=
   "🌌 宇宙開拓クリッカーで遊ぼう！";
 
-
  if(navigator.share){
 
   try{
 
    await navigator.share({
-
-    title:
-     "宇宙開拓クリッカー",
-
+    title:"宇宙開拓クリッカー",
     text,
-
-    url:
-     location.href
-
+    url:location.href
    });
 
    return;
 
   }catch(e){}
-
  }
 
+ const url=location.href;
 
- const url=
-  location.href;
-
-
- if(
-  url.startsWith("http")
- ){
+ if(url.startsWith("http")){
 
   location.href=
    "https://line.me/R/msg/text/?"+
    encodeURIComponent(
-    text+
-    "\n"+
-    url
+    text+"\n"+url
    );
 
  }else{
 
   notify(
-   "このHTMLをWeb公開すると、LINE共有が使えるようになります。"
+   "このHTMLをWeb公開すると、LINE共有が使えます。"
   );
-
  }
-
 };
-
 
 /* =========================
    自動生産
@@ -1858,30 +1421,40 @@ $("share").onclick=async()=>{
 
 setInterval(()=>{
 
- const c=
-  crews[s.crew]||crews[0];
-
- const t=
-  totals();
+ const t=totals();
+ const cm=crewMultipliers();
 
  const gain=
   t.auto*
   multiplier()*
-  c.auto;
+  cm.auto;
 
-
- if(gain){
+ if(gain>0){
 
   s.energy+=gain;
-
   s.total+=gain;
 
   render();
-
  }
 
 },1000);
 
+/* =========================
+   自動セーブ
+========================= */
+
+setInterval(()=>{
+
+ try{
+
+  localStorage.setItem(
+   "space_clicker_save_v7",
+   encode()
+  );
+
+ }catch(e){}
+
+},5000);
 
 /* =========================
    起動時ロード
@@ -1890,140 +1463,93 @@ setInterval(()=>{
 try{
 
  const saved=
-
+  localStorage.getItem(
+   "space_clicker_save_v7"
+  )||
   localStorage.getItem(
    "space_clicker_save_v6"
-  )
-
-  ||
-
+  )||
   localStorage.getItem(
    "space_clicker_save_v5"
-  )
-
-  ||
-
-  localStorage.getItem(
-   "space_clicker_save_v4"
-  )
-
-  ||
-
-  localStorage.getItem(
-   "space_clicker_save_v3"
   );
-
 
  if(saved){
 
-  const n=
-   decode(saved);
+  const n=decode(saved);
 
-
-  const migrated={
-   ...fresh(),
-   ...n,
-   fac:{},
-   owned:{0:1}
-  };
-
-
-  for(
-   const [k,v]
-   of Object.entries(
-    n.fac||{}
-   )
+  if(
+   n&&
+   typeof n.energy==="number"
   ){
 
-   if(
-    typeof v==="number"
-    &&
-    Number.isFinite(v)
-   ){
+   s={
+    ...fresh(),
+    ...n
+   };
 
-    migrated.fac[k]=v;
+   if(!Array.isArray(s.owned)){
+    s.owned=
+     Number.isInteger(n.crew)
+     ?[n.crew]
+     :[0];
+   }
+
+   s.owned=[
+    ...new Set(
+     s.owned.filter(
+      i=>Number.isInteger(i)&&crews[i]
+     )
+    )
+   ];
+
+   if(!s.owned.length){
+    s.owned=[0];
+   }
+
+   if(!Array.isArray(s.equipped)){
+
+    s.equipped=
+     Number.isInteger(n.crew)
+     ?[n.crew]
+     :[0];
 
    }
 
+   s.equipped=
+    s.equipped.filter(
+     i=>Number.isInteger(i)&&
+     s.owned.includes(i)&&
+     crews[i]
+    );
+
+   s.equipped=
+    [...new Set(s.equipped)]
+    .slice(0,equipSlots());
+
+   if(!s.equipped.length){
+    s.equipped=[0];
+   }
+
+   if(!Number.isInteger(s.planet)){
+    s.planet=0;
+   }
+
+   s.planet=
+    Math.max(
+     0,
+     Math.min(
+      planets.length-1,
+      s.planet
+     )
+    );
   }
-
-
-  if(
-   n.owned&&
-   typeof n.owned==="object"&&
-   !Array.isArray(n.owned)
-  ){
-
-   migrated.owned={
-    ...migrated.owned,
-    ...n.owned
-   };
-
-  }
-
-  else if(
-   Array.isArray(n.owned)
-  ){
-
-   n.owned.forEach(i=>{
-
-    if(crews[i]){
-
-     migrated.owned[i]=
-      (migrated.owned[i]||0)+1;
-
-    }
-
-   });
-
-  }
-
-
-  if(
-   Number.isInteger(n.crew)
-   &&
-   crews[n.crew]
-  ){
-
-   migrated.crew=
-    n.crew;
-
-  }
-
-
-  if(
-   !crews[migrated.crew]
-  ){
-
-   migrated.crew=0;
-
-  }
-
-
-  s=migrated;
-
  }
 
 }catch(e){}
 
-
-/* 5秒ごとに自動保存 */
-
-setInterval(()=>{
-
- try{
-
-  localStorage.setItem(
-   "space_clicker_save_v6",
-   encode()
-  );
-
- }catch(e){}
-
-},5000);
-
-
-/* 初回描画 */
+/* =========================
+   起動
+========================= */
 
 render();
 
