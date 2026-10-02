@@ -655,7 +655,8 @@ function totals(){
 
 /* 施設価格 */
 function facilityCost(f){
- return f.baseCost;
+ const lv=s.fac[f.id]||0;
+ return Math.ceil(f.baseCost*Math.pow(1.18,lv));
 }
 
 
